@@ -6,7 +6,7 @@ using UnityEngine.Localization.SmartFormat.Utilities;
 
 namespace RPGSystem
 {
-    public class RPGEvent : MonoBehaviour
+    public class RPGEvent : MonoBehaviour, IMouseClickable
     {
         [OnValueChanged("OnUIValuePageChanged", true)]
         public List<PageEvent> pages = new();
@@ -220,6 +220,10 @@ namespace RPGSystem
             }
         }
 
+        public void OnMouseClick()
+        {
+            TriggerEvent();
+        }
     }
 
 }
