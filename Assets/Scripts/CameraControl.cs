@@ -21,7 +21,6 @@ public class CameraMouseFollow : MonoBehaviour
 
     void Update()
     {
-        print(DialogManager.Instance.state);
         if (DialogManager.Instance.state == State.Deactivate) CameraMovement();
         if (Input.GetButtonDown("Interact")) CastRayInteraction();
     }

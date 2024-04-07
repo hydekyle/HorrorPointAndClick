@@ -14,7 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_TableCollectionName: Level 1
   m_TableCollectionNameGuidString: a0687bf09fca3ce4a8f1523af08c5168
-  m_Entries: []
+  m_Entries:
+  - m_Id: 23939018752
+    m_Key: First Click
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
