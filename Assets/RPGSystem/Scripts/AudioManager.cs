@@ -17,8 +17,10 @@ namespace RPGSystem
             else Instance = this;
         }
 
-        public void PlaySound(AudioClip soundClip, SoundOptions soundOptions, GameObject emitter = null)
+        public void PlaySound(AudioClip soundClip, SoundOptions soundOptions = null, GameObject emitter = null)
         {
+            soundOptions ??= new();
+
             if (soundOptions.keepPlayingWhenDisabled)
             {
                 PlaySoundFromGameobjectDisabled(soundClip, soundOptions, emitter);
@@ -28,7 +30,7 @@ namespace RPGSystem
             {
                 PlaySound(soundClip, soundOptions, Camera.main.gameObject);
             }
-            else if (emitter.TryGetComponent<AudioSource>(out AudioSource audioSource))
+            else if (emitter.TryGetComponent(out AudioSource audioSource))
             {
                 Play(audioSource, soundClip, soundOptions, emitter);
             }

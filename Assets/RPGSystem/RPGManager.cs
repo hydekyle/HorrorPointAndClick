@@ -18,12 +18,13 @@ namespace RPGSystem
     {
         public static RPGManager Instance;
 
-        public static GameReferences refs = new();
-        public static GameState gameState = new();
+        public GameReferences refs = new();
+        public GameState gameState = new();
 
         bool isInteractionAvailable = true;
         bool isMovementAvailable = true;
 
+        [HideInInspector]
         public FogData fogData;
 
         public bool IsInteractionAvailable() => isInteractionAvailable && DialogManager.Instance.state == State.Deactivate;
@@ -41,7 +42,7 @@ namespace RPGSystem
             }
         }
 
-        static void SaveRefs()
+        void SaveRefs()
         {
             try
             {

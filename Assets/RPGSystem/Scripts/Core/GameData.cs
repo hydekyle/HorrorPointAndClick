@@ -41,8 +41,8 @@ namespace RPGSystem
         public void SaveGameStateSlot(int slotIndex)
         {
             savedMapSpawnIndex = -1;
-            savedPosition = RPGManager.refs.player.transform.position;
-            savedFaceDir = RPGManager.refs.player.faceDirection;
+            savedPosition = RPGManager.Instance.refs.player.transform.position;
+            savedFaceDir = RPGManager.Instance.refs.player.faceDirection;
             savedMapName = SceneManager.GetActiveScene().name;
             var fileName = "/savegame" + slotIndex;
             var savePath = string.Concat(Application.persistentDataPath, fileName);
@@ -70,7 +70,7 @@ namespace RPGSystem
             }
             //TODO: Remove when Title Menu is completed
             await SceneManager.LoadSceneAsync(savedMapName);
-            var playerT = RPGManager.refs.player.transform;
+            var playerT = RPGManager.Instance.refs.player.transform;
             playerT.position = savedPosition;
             playerT.GetComponent<Entity>().LookAtDirection(savedFaceDir);
         }

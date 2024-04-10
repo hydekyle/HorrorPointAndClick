@@ -53,7 +53,7 @@ namespace RPGSystem
         public async UniTask Resolve()
         {
             if (changeCameraSpeed) CameraController.Instance.SetVelocity(cameraVelocity);
-            var myTarget = cameraTarget == CameraTarget.Player ? RPGManager.refs.player.transform : target;
+            var myTarget = cameraTarget == CameraTarget.Player ? RPGManager.Instance.refs.player.transform : target;
             CameraController.Instance.SetTarget(myTarget);
             changePlayerMobility.Resolve().Forget();
         }
@@ -102,7 +102,7 @@ namespace RPGSystem
 
         public async UniTask Resolve()
         {
-            RPGManager.gameState.ResolveSetVariables(setVariables);
+            RPGManager.Instance.gameState.ResolveSetVariables(setVariables);
         }
     }
 
@@ -145,7 +145,7 @@ namespace RPGSystem
     public class ShowText : WaitableAction, IAction
     {
         public bool hideFrame;
-        public TextAnchor textAlignment = TextAnchor.UpperLeft;
+        public TextAnchor textAlignment = TextAnchor.MiddleCenter;
         public LocalizedString localizedText;
 
         public async UniTask Resolve()
@@ -271,7 +271,7 @@ namespace RPGSystem
         public int amount;
         public async UniTask Resolve()
         {
-            RPGManager.gameState.AddItem(item, amount);
+            RPGManager.Instance.gameState.AddItem(item, amount);
         }
     }
 
@@ -364,8 +364,8 @@ namespace RPGSystem
 
         public async UniTask Resolve()
         {
-            var gameData = RPGManager.gameState;
-            var playerEntity = RPGManager.refs.player;
+            var gameData = RPGManager.Instance.gameState;
+            var playerEntity = RPGManager.Instance.refs.player;
             gameData.savedMapSpawnIndex = mapSpawnIndex;
             gameData.savedFaceDir = changeFaceDirection ? newFaceDirection : playerEntity.faceDirection;
             if (SceneManager.GetActiveScene().name == mapName)
